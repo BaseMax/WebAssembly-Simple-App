@@ -47,6 +47,8 @@ Once the project is built, you can serve the files using a local web server. If 
 
 ```bash
 python3 -m http.server
+or
+python -m http.server
 ```
 
 Open the browser and navigate to `http://localhost:8000` to view the app.

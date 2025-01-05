@@ -1,1 +1,1 @@
-emcc calculator.c -o calculator.js -s EXIT_RUNTIME=1 -s ENVIRONMENT=web -s MODULARIZE=1 -s EXPORT_ES6=1
+emcc calculator.c -Os -s WASM=1 -s EXPORTED_FUNCTIONS='["_calculate_wrapper"]' -s EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap']" -o calculator.js

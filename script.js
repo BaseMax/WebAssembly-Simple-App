@@ -1,7 +1,22 @@
+function getOperationString(operation) {
+    switch (operation) {
+        case 0: return '+';
+        case 1: return '-';
+        case 2: return '*';
+        case 3: return '/';
+        default: return '?';
+    }
+}
+
 function runMainWithArgs(num1, num2, operation) {
     const args = [num1.toString(), num2.toString(), operation.toString()];
-    Module.arguments = args;
-    Module.run();
+    
+    console.log(`Running main with args: ${args.join(' ')}`);
+
+    const result = Module.ccall('calculate_wrapper', 'number', ['number', 'number', 'number'], args);
+    console.log(`Result: ${num1} ${getOperationString(operation)} ${num2} = ${result}`);
+
+    return result;
 }
 
 Module.onRuntimeInitialized = () => {
